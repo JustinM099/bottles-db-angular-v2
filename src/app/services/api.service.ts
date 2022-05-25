@@ -14,7 +14,7 @@ export class ApiService {
   }
 
   getWine() {
-    return this.http.get<Wine>("http://localhost:5000/wineList/");
+    return this.http.get<Wine[]>("http://localhost:5000/wineList/");
   }
 
 }
