@@ -1,0 +1,64 @@
+{
+  "wineList": [
+    {
+      "producer": "Quilceda Creek",
+      "wineName": "Cabernet Sauvignon",
+      "vintage": 2005,
+      "wineType": "redWine",
+      "region": "Washington State",
+      "variety": "Cabernet Sauvignon",
+      "notes": "100 Points Wine Advocate",
+      "storageLocation": "A1",
+      "quantity": 12,
+      "id": 1
+    },
+    {
+      "producer": "Leonetti Cellar",
+      "wineName": "Cabernet Sauvignon",
+      "vintage": 2005,
+      "wineType": "redWine",
+      "region": "Walla Walla",
+      "variety": "Cabernet Sauvignon",
+      "notes": "99 Points Wine Advocate",
+      "storageLocation": "A2",
+      "quantity": 12,
+      "id": 2
+    },
+    {
+      "producer": "Chateau Latour",
+      "wineName": "Grand Vin",
+      "vintage": 2005,
+      "wineType": "redWine",
+      "region": "Pauillac",
+      "variety": "Cabernet Blend",
+      "notes": "100 Points Wine Spectator",
+      "storageLocation": "A3",
+      "quantity": 12,
+      "id": 3
+    },
+    {
+      "producer": "Chateau Margaux",
+      "wineName": "Grand Vin",
+      "vintage": 2000,
+      "wineType": "redWine",
+      "region": "Margaux",
+      "variety": "Cabernet Blend",
+      "notes": "100 Points Wine Advocate",
+      "storageLocation": "A4",
+      "quantity": 12,
+      "id": 4
+    },
+    {
+      "producer": "Screaming Eagle",
+      "wineName": "Cabernet Sauvignon",
+      "vintage": 1997,
+      "wineType": "redWine",
+      "region": "Napa Valley",
+      "variety": "Cabernet Sauvignon",
+      "notes": "100 Points Wine Spectator",
+      "storageLocation": "A5",
+      "quantity": 12,
+      "id": 5
+    }
+  ]
+}

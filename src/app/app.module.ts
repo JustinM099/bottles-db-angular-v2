@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,13 +18,15 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     DialogComponent,
-    AddFormComponent
+    AddFormComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { AddFormComponent } from './components/add-form/add-form.component';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
