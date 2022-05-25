@@ -4,19 +4,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { AddFormComponent } from './components/add-form/add-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    DialogComponent
+    DialogComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,12 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

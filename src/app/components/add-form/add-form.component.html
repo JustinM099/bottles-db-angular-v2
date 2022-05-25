@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add Your Wine</h1>
+<div mat-dialog-content>
+    <form [formGroup]="addForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Producer</mat-label>
+            <input formControlName="producer" matInput placeholder="Producer">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Wine Name</mat-label>
+            <input formControlName="wineName" matInput placeholder="Wine Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Vintage</mat-label>
+            <input formControlName="vintage" type="number" matInput placeholder="Vintage">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Wine Type</mat-label>
+            <mat-select formControlName="wineType" placeholder="Wine Type">
+                <mat-option value="redWine">Red Wine</mat-option>
+                <mat-option value="whiteWine">White Wine</mat-option>
+                <mat-option value="roseWine">Rose Wine</mat-option>
+                <mat-option value="sparklingWine">Sparkling Wine</mat-option>
+                <mat-option value="otherWine">Dessert/Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Region</mat-label>
+            <input formControlName="region" matInput placeholder="Region">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Variety</mat-label>
+            <input formControlName="variety" matInput placeholder="Variety">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Notes</mat-label>
+            <textarea formControlName="notes" matInput placeholder="Notes"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Storage Location</mat-label>
+            <input formControlName="storageLocation" matInput placeholder="Storage Location">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input formControlName="quantity" type="number" matInput placeholder="Quantity">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button style="margin-left: 1vw" mat-raised-button color="primary">Save</button>
+</div>

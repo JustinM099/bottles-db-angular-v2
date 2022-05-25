@@ -16,7 +16,7 @@ export class ToolbarComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogComponent, {
-      width: '30%'
+      width: '40%'
     });
   }
 
