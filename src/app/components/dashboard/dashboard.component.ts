@@ -1,9 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Wine } from 'Wine';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,13 +13,13 @@ import { Wine } from 'Wine';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['producer', 'wineName', 'vintage', 'wineType', 'region', 'variety', 'notes', 'storageLocation', 'quantity'];
+  displayedColumns: string[] = ['producer', 'wineName', 'vintage', 'wineType', 'region', 'variety', 'notes', 'storageLocation', 'quantity', 'edit'];
   dataSource!: MatTableDataSource<Wine>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api: ApiService ) { }
+  constructor(private api: ApiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllWines()
@@ -35,6 +37,13 @@ export class DashboardComponent implements OnInit {
         console.log("ERROR: ", err)
       }
     })
+  }
+
+  editWine(row: Wine) {
+    this.dialog.open(DialogComponent, {
+      width: '40%',
+      data: row
+    });
   }
 
   applyFilter(event: Event) {

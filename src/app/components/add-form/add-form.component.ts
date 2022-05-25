@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder,Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { Wine } from 'Wine';
 
 @Component({
   selector: 'app-add-form',
@@ -11,9 +12,14 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class AddFormComponent implements OnInit {
 
-  addForm!: FormGroup; 
+  addForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService, private dialogRef: MatDialogRef<DialogComponent> ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    @Inject(MAT_DIALOG_DATA) public editData: Wine,
+    private dialogRef: MatDialogRef<DialogComponent>
+  ) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -26,8 +32,21 @@ export class AddFormComponent implements OnInit {
       notes: [''],
       storageLocation: [''],
       quantity: ['', Validators.required]
-      
+
     })
+
+    if (this.editData) {
+      this.addForm.controls['producer'].setValue(this.editData.producer)
+      this.addForm.controls['wineName'].setValue(this.editData.wineName)
+      this.addForm.controls['vintage'].setValue(this.editData.vintage)
+      this.addForm.controls['wineType'].setValue(this.editData.wineType)
+      this.addForm.controls['region'].setValue(this.editData.region)
+      this.addForm.controls['variety'].setValue(this.editData.variety)
+      this.addForm.controls['notes'].setValue(this.editData.notes)
+      this.addForm.controls['storageLocation'].setValue(this.editData.storageLocation)
+      this.addForm.controls['quantity'].setValue(this.editData.quantity)
+    }
+
 
   }
 
@@ -39,7 +58,7 @@ export class AddFormComponent implements OnInit {
             alert('Your wine was successfully added.');
             this.addForm.reset();
             this.dialogRef.close('save');
-          }, 
+          },
           error: () => {
             alert('Sorry, something went wrong.')
           }
