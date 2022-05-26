@@ -17,4 +17,11 @@ export class ApiService {
     return this.http.get<Wine[]>("http://localhost:5000/wineList/");
   }
 
+  putWine(wine: Wine, id: number) {
+    return this.http.put<Wine[]>("http://localhost:5000/wineList/" + id, wine);
+  }
+
+  deleteWine(id: number) {
+    return this.http.delete<Wine[]>("http://localhost:5000/wineList/" + id);
+  }
 }

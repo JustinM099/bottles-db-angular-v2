@@ -43,7 +43,11 @@ export class DashboardComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '40%',
       data: row
-    });
+    }).afterClosed().subscribe(val => {
+      if (val === 'update') {
+        this.getAllWines();
+      }
+    })
   }
 
   applyFilter(event: Event) {

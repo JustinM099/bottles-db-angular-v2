@@ -13,6 +13,7 @@ import { Wine } from 'Wine';
 export class AddFormComponent implements OnInit {
 
   addForm!: FormGroup;
+  actionBtn: string = "Save";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,6 +37,7 @@ export class AddFormComponent implements OnInit {
     })
 
     if (this.editData) {
+      this.actionBtn = 'Update'
       this.addForm.controls['producer'].setValue(this.editData.producer)
       this.addForm.controls['wineName'].setValue(this.editData.wineName)
       this.addForm.controls['vintage'].setValue(this.editData.vintage)
@@ -51,19 +53,33 @@ export class AddFormComponent implements OnInit {
   }
 
   addWine() {
-    if (this.addForm.valid) {
-      this.api.postWine(this.addForm.value)
-        .subscribe({
-          next: (res) => {
-            alert('Your wine was successfully added.');
-            this.addForm.reset();
-            this.dialogRef.close('save');
-          },
-          error: () => {
-            alert('Sorry, something went wrong.')
-          }
-        })
-    }
+    if (!this.editData) {
+      if (this.addForm.valid) {
+        this.api.postWine(this.addForm.value)
+          .subscribe({
+            next: (res) => {
+              this.addForm.reset();
+              this.dialogRef.close('save');
+            },
+            error: () => {
+              alert("I'm sorry. an error occurred.")
+            }
+          })
+      }
+    }else(this.updateWine())
+  }
+
+  updateWine() {
+    this.api.putWine(this.addForm.value, this.editData.id)
+      .subscribe({
+        next: (res) => {
+          this.addForm.reset();
+          this.dialogRef.close('update');
+        },
+        error: () => {
+          alert("I'm sorry. an error occurred.")
+        }
+      })
   }
 
 }
