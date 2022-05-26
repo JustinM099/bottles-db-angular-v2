@@ -22,6 +22,6 @@ export class ApiService {
   }
 
   deleteWine(id: number) {
-    return this.http.delete<Wine[]>("http://localhost:5000/wineList/" + id);
+    return this.http.delete<Wine[]>("http://localhost:5000/wineList/"+id);
   }
 }

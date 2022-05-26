@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 1vh">
     <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Filter By Producer" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
     </mat-form-field>
 
     <div class="mat-elevation-z8">
@@ -63,7 +63,7 @@
                     <button mat-icon-button color="primary" (click)="editWine(row)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn" (click)="deleteWine(row.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
 
@@ -79,8 +79,6 @@
             </tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
 </div>
-
-<!-- 'producer', 'wineName', 'vintage', 'wineType', 'region', 'variety', 'notes', 'storageLocation', 'quantity' -->

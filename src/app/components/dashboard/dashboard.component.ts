@@ -50,6 +50,16 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  deleteWine(id: number) {
+    if(confirm("Are you sure you want to delete that wine?") == true){
+      this.api.deleteWine(id)
+        .subscribe({
+          error: () => alert("Sorry, something went wrong.")
+        });
+      this.getAllWines();
+    }
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
