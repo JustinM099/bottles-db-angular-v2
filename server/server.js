@@ -3,6 +3,7 @@ const express = require('express');
 
 const db = require('./config/connection');
 const routes = require('./routes');
+const { authMiddleware } = require('./utils/auth');
 
 
 const cwd = process.cwd();
@@ -10,6 +11,7 @@ const cwd = process.cwd();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
+app.use(authMiddleware())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

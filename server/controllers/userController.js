@@ -1,13 +1,30 @@
 const { Bottle, User } = require('../models')
+const { signToken } = require('../utils/auth');
 
 //------------------USER ROUTES----------------//
+
+//LOGIN
+const login = ({ body }, res) => {
+    const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+    if (!user) {
+        return res.status(400).json({ message: "Can't find this user" });
+    }
+
+    const correctPw = await user.isCorrectPassword(body.password);
+
+    if (!correctPw) {
+        return res.status(400).json({ message: 'Wrong password!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+}
 
 // GET all users
 const getUsers = async (req, res) => {
     try {
         const allUsers = await User.find()
             .populate('bottles')
-            // .populate('friends')
+        // .populate('friends')
         res.json(allUsers)
     } catch (err) {
         console.log(err)
@@ -16,17 +33,17 @@ const getUsers = async (req, res) => {
 }
 
 // GET a single user by its _id and populated bottle and friend data
-const getOneUser = async (req, res) => {
+const getOneUser = async ({ user = null, params }, res) => {
     try {
-        const oneUser = await User.findOne({ _id: req.params.id })
+        const oneUser = await User.findOne({ $or: [{ _id: user ? user._id : params.id }, { username: params.username }] })
             .populate('bottles')
-            // .populate('friends')
+        // .populate('friends')
         if (!oneUser) {
             res.status(404).json({ message: 'No Such User, Sorry.' })
         }
         res.json(oneUser)
     } catch (err) {
-        console.log(err)
+        console.log('ERR: ', err)
         res.status(500).json(err)
     }
 }
@@ -34,8 +51,9 @@ const getOneUser = async (req, res) => {
 // POST a new user
 const createUser = async (req, res) => {
     try {
-        const newUser = await User.create(req.body)
-        res.json(newUser)
+        const user = await User.create(req.body);
+        const token = signToken(user);
+        res.json({ token, user })
     } catch (err) {
         res.status(500).json(err)
     }
@@ -92,6 +110,6 @@ const deleteUser = async (req, res) => {
 // }
 
 module.exports = {
-    getUsers, getOneUser, createUser, updateUser, deleteUser,
+    getUsers, getOneUser, createUser, updateUser, deleteUser, login
     // addFriend, deleteFriend
 }
