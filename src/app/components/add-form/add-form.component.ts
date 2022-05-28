@@ -70,7 +70,7 @@ export class AddFormComponent implements OnInit {
   }
 
   updateWine() {
-    this.api.putWine(this.addForm.value, this.editData.id)
+    this.api.putWine(this.addForm.value, this.editData._id)
       .subscribe({
         next: (res) => {
           this.addForm.reset();

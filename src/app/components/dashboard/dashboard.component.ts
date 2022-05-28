@@ -57,6 +57,7 @@ export class DashboardComponent implements OnInit {
           error: () => alert("Sorry, something went wrong.")
         });
       this.getAllWines();
+      window.location.reload();
     }
   }
 

@@ -1,5 +1,5 @@
 export interface Wine {
-    id: number;
+    _id: number;
     producer: string;
     wineName: string;
     vintage: number;
