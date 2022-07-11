@@ -17,7 +17,10 @@ const userSchema = new Schema(
             unique: true,
             match: [/^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/, "I'd like you to enter a valid email, please."]
         },
-        bottles: [bottleSchema],
+        bottles: [{
+            type: Schema.Types.ObjectId,
+            ref: 'bottle',
+        }],
         // friends: [{
         //     type: Schema.Types.ObjectId,
         //     ref: 'user'
@@ -30,7 +33,6 @@ const userSchema = new Schema(
         },
     }
 );
-
 
 // hash user password
 userSchema.pre('save', async function (next) {

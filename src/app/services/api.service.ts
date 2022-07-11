@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   
   postWine(wine: Wine) {
-    return this.http.post<Wine>("http://localhost:5000/api/bottles", wine);
+    return this.http.post<Wine[]>("http://localhost:5000/api/bottles", wine);
   }
 
   getWine(): Observable<any> {

@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 //------------------USER ROUTES----------------//
 
 //LOGIN
-const login = ({ body }, res) => {
+const login = async ({ body }, res) => {
     const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
     if (!user) {
         return res.status(400).json({ message: "Can't find this user" });

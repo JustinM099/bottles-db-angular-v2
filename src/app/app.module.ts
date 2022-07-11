@@ -13,7 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +28,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +38,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ToolbarComponent,
     DialogComponent,
     AddFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegistrationComponent,
+    LoginComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +59,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatRadioModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
